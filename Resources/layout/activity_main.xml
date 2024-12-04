@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background">
+
+    <TextView
+        android:id="@+id/textView1"
+        android:text="Yeutz Li"
+        android:fontFamily=""
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:textColor="#000080"/>
+    <EditText
+        android:id="@+id/emailField" 
+        android:inputType="textEmailAddress"
+        android:hint="Email.."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="400dp"
+        android:minHeight="15dp"
+        />
+    <EditText
+        android:id="@+id/passwordField" 
+        android:inputType="textEmailAddress"
+        android:hint="Password.."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:password="true"
+        android:minWidth="400dp"
+        android:minHeight="15dp"
+        />
+    <Button
+        android:id="@+id/button1"
+        android:text="התחבר"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    
+</LinearLayout>
