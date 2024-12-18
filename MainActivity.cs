@@ -5,11 +5,13 @@ using Android.Widget;
 using AndroidX.AppCompat.App;
 using Android.Content;
 
+
 namespace YeutzLi
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
+        
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -26,6 +28,7 @@ namespace YeutzLi
                 // Navigate to HomeActivity
                 Intent intent = new Intent(this, typeof(HomeActivity));
                 StartActivity(intent);
+                Finish();
             };
         }
 
@@ -48,6 +51,18 @@ namespace YeutzLi
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_home);
+            // Find the button by ID
+            Button button = FindViewById<Button>(Resource.Id.button1);
+
+            // Set the click event
+            button.Click += (sender, e) =>
+            {
+                // Navigate to HomeActivity
+                Intent intent = new Intent(this, typeof(MainActivity));
+                StartActivity(intent);
+                Finish();
+            };
         }
+
     }
 }
