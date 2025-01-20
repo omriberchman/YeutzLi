@@ -4,6 +4,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Kotlin.Text;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace YeutzLi
     [Activity(Label = "ActivityRegister")]
     public class ActivityRegister : Activity
     {
-        Button reg_submit;
+        Button reg_submit, reg_exit;
         EditText reg_email , reg_password   , reg_age;
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -25,6 +26,11 @@ namespace YeutzLi
             reg_password = FindViewById<EditText>(Resource.Id.reg_password);
             reg_age = FindViewById<EditText>(Resource.Id.reg_age);
             reg_submit = FindViewById<Button>(Resource.Id.reg_submit);
+            reg_exit = FindViewById<Button>(Resource.Id.reg_exit);
+            reg_exit.Click += (sender, e) =>
+            {
+                Finish();
+            };
             reg_submit.Click += OnSubmitClicked;
         }
 
