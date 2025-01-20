@@ -7,8 +7,6 @@ using Android.Content;
 using System;
 using Xamarin.Essentials;
 using Java.Net;
-using User;
-
 
 namespace YeutzLi
 {

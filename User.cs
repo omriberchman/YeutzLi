@@ -26,11 +26,6 @@ namespace YeutzLi
         {
             Email = email;
             Password = password;
-        }
-        public User(string email, string password, string age)
-        {
-            Email = email;
-            Password = password;
             Age = age;
         }
         public async Task<bool> Register()
