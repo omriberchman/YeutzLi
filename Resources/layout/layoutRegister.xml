@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+              >
+    <TextView
+        android:text="הרשמה"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:fontFamily=""
+        android:textColor="#212121"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="60dp"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        />
+    
+    <!-- שדה אימייל -->
+    <EditText
+        android:id="@+id/reg_email"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="אימייל"
+        android:inputType="textEmailAddress"/>
+
+    <!-- שדה סיסמה -->
+    <EditText
+        android:id="@+id/reg_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="סיסמה"
+        android:inputType="textPassword"/>
+
+    <!-- שדה גיל -->
+    <EditText
+        android:id="@+id/reg_age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="גיל"
+        android:inputType="number"/>
+
+    <!-- כפתור שליחה -->
+    <Button
+        android:id="@+id/reg_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="שלח"
+        android:onClick="OnSubmitClicked"/>
+    <Button
+        android:id="@+id/reg_exit"
+        android:layout_width="90dp"
+        android:layout_height="46dp"
+        android:text="ביטול"
+        android:gravity="center"
+        android:layout_marginTop="210dp"
+        android:layout_gravity="center"
+        />
+
+</LinearLayout>

@@ -18,7 +18,7 @@
         android:textSize="60dp"
         android:minWidth="25px"
         android:minHeight="25px"
-        android:id="@+id/textView1" />
+        />
     <Switch
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,5 +27,5 @@
         android:text="Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button1" />
+        android:id="@+id/btHomeLogout" />
 </LinearLayout>

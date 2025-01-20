@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "710310418256",
+    "project_id": "omriyeutzli",
+    "storage_bucket": "omriyeutzli.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:710310418256:android:14633f6b2977011af33e55",
+        "android_client_info": {
+          "package_name": "com.companyname.yeutzli"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKs4Yh2NBvB6ZwPI3Z0zaae8yfTqYzXzM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -4,6 +4,10 @@ using Android.Runtime;
 using Android.Widget;
 using AndroidX.AppCompat.App;
 using Android.Content;
+using System;
+using Xamarin.Essentials;
+using Java.Net;
+using User;
 
 
 namespace YeutzLi
@@ -11,7 +15,7 @@ namespace YeutzLi
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
-        
+        Button btMainReg;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -20,16 +24,34 @@ namespace YeutzLi
             SetContentView(Resource.Layout.activity_main);
 
             // Find the button by ID
-            Button button = FindViewById<Button>(Resource.Id.loginButton);
-
+            Button loginButton = FindViewById<Button>(Resource.Id.loginButton);
+          
             // Set the click event
-            button.Click += (sender, e) =>
+            loginButton.Click += LoginButton_Click;
+
+            btMainReg = FindViewById<Button>(Resource.Id.btMainReg);
+            btMainReg.Click += BtMainReg_Click;
+
+        }
+
+        private void BtMainReg_Click(object sender, System.EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(ActivityRegister));
+            StartActivity(intent);
+        }
+
+        private void LoginButton_Click(object sender, System.EventArgs e)
+        {
+            if (true)
             {
-                // Navigate to HomeActivity
                 Intent intent = new Intent(this, typeof(HomeActivity));
                 StartActivity(intent);
-                Finish();
-            };
+            }
+            else
+            {
+                Console.WriteLine("Username or password incorrect.");
+            }
+           // Finish();
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
@@ -44,25 +66,5 @@ namespace YeutzLi
 
 
 
-    [Activity(Label = "HomeActivity")]
-    public class HomeActivity : AppCompatActivity
-    {
-        protected override void OnCreate(Bundle savedInstanceState)
-        {
-            base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.activity_home);
-            // Find the button by ID
-            Button button = FindViewById<Button>(Resource.Id.button1);
-
-            // Set the click event
-            button.Click += (sender, e) =>
-            {
-                // Navigate to HomeActivity
-                Intent intent = new Intent(this, typeof(MainActivity));
-                StartActivity(intent);
-                Finish();
-            };
-        }
-
-    }
+   
 }
