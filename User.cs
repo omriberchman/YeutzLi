@@ -28,6 +28,11 @@ namespace YeutzLi
             Password = password;
             Age = age;
         }
+        public User(string email, string password)
+        {
+            Email = email;
+            Password = password;
+        }
         public async Task<bool> Register()
         {
             FirebaseAuth firebaseAuthentication = FireBaseHelper.GetFirebaseAuthentication();

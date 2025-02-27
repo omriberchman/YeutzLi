@@ -29,6 +29,8 @@ namespace YeutzLi
 
         private void BtHomeLogout_Click(object sender, EventArgs e)
         {
+            Intent intent = new Intent(this, typeof(CounselorActivity));
+            StartActivity(intent);
             Finish();
         }
     }

@@ -5,15 +5,14 @@ using Android.Widget;
 using AndroidX.AppCompat.App;
 using Android.Content;
 using System;
-using Xamarin.Essentials;
-using Java.Net;
 
 namespace YeutzLi
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
-        Button btMainReg;
+        Button btMainReg, loginButton;
+        EditText emailField, passwordField;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -23,7 +22,9 @@ namespace YeutzLi
 
             // Find the button by ID
             Button loginButton = FindViewById<Button>(Resource.Id.loginButton);
-          
+            emailField = FindViewById<EditText>(Resource.Id.emailField);
+            passwordField = FindViewById<EditText>(Resource.Id.passwordField);
+
             // Set the click event
             loginButton.Click += LoginButton_Click;
 
@@ -38,18 +39,28 @@ namespace YeutzLi
             StartActivity(intent);
         }
 
-        private void LoginButton_Click(object sender, System.EventArgs e)
+        private async void LoginButton_Click(object sender, System.EventArgs e)
         {
-            if (true)
+            String email = emailField.Text;
+            String password = passwordField.Text;
+
+            User user = new User(email, password);
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
+                Toast.MakeText(this, "Please fill all fields", ToastLength.Short).Show();
+                return;
+            }
+
+            if (await user.Login())
+            {
+                Toast.MakeText(this, "Successfully registered", ToastLength.Short).Show();
                 Intent intent = new Intent(this, typeof(HomeActivity));
                 StartActivity(intent);
             }
             else
             {
-                Console.WriteLine("Username or password incorrect.");
+                Toast.MakeText(this, "Error accrued while registering. Try again..", ToastLength.Short).Show();
             }
-           // Finish();
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
