@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:padding="10dp">
+    <TextView
+        android:id="@+id/chatResponse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Overlay Text"
+        android:textSize="20dp"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center"
+        android:isScrollContainer="true"
+        android:gravity="bottom"
+        android:maxHeight="240dp"
+        android:layout_marginTop="1dp" />
+
+
+    <!-- TextView at the top of the page (above the image) -->
 
     <!-- Chat Messages List -->
     <ListView
@@ -15,14 +31,19 @@
         android:divider="@android:color/transparent"
         android:dividerHeight="5dp"/>
 
-
-    <TextView
+    <!-- RelativeLayout for layering Image and Text -->
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Welcome! How can I help?"
-        android:textSize="18sp"
-        android:id="@+id/chatResponse" 
-        android:gravity="center"/>
+        android:layout_height="500dp">
+
+        <!-- ImageView -->
+        <ImageView
+            android:id="@+id/docImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/thinking" />
+
+    </RelativeLayout>
 
     <!-- Message Input Area -->
     <LinearLayout
@@ -41,14 +62,17 @@
             android:inputType="text"
             android:background="@android:color/white"
             android:padding="10dp"
-            android:layout_marginEnd="5dp"/>
+            android:layout_marginEnd="5dp"
+            android:textColor="#000000"
+            android:textColorHint="#888888" />
 
+        <!-- Send Button -->
         <Button
             android:id="@+id/sendButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Send"
-            android:background="#25D366"
+            android:background="#3f51b5"
             android:textColor="@android:color/white"/>
     </LinearLayout>
 

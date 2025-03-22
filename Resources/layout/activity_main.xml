@@ -39,15 +39,16 @@
         />
     <Button
         android:id="@+id/loginButton"
-        android:text="התחבר"
+        android:text="Login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
 
     <Button
         android:id="@+id/btMainReg"
-        android:text="הרשמה"
+        android:text="Sign up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
+
 </LinearLayout>
