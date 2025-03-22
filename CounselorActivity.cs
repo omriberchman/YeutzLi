@@ -5,8 +5,11 @@ using Android.Views;
 using AndroidX.AppCompat.App;
 using System;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Text;
+using System.Threading.Tasks;
+using Android.Gms.Common.Apis;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace YeutzLi
 {
@@ -36,38 +39,37 @@ namespace YeutzLi
                     userInput.Text = "";  // Clear input
                     chatResponse.Text = "Thinking...";  // Show loading text
 
-                    string response = await GetAIResponse(message);
+                    var result = await GetAIResponse(message);
+                    string response = JsonConvert.SerializeObject(result, Formatting.Indented);
                     chatResponse.Text = response;  // Display response
                 }
             };
         }
 
-        public static async Task<string> GetAIResponse(string requestBody)
+        public static async Task<object> GetAIResponse(string prompt)
         {
+            string url = "https://api.restful-api.dev/objects";
+
+            var data = new
+            {
+                model = "gemma3",
+                prompt = prompt
+            };
+
+
             using (var client = new HttpClient())
             {
-                try
-                {
-                    // Set up the request content with the provided body
-                    var content = new StringContent(requestBody, Encoding.UTF8, "application/json");
+                var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
+                var response = await client.PostAsync(url, content);
 
-                    // Send the POST request to the API
-                    HttpResponseMessage response = await client.PostAsync("https://192.168.0.26:11434/api/generate", content);
+                // Read the response content
+                var responseContent = await response.Content.ReadAsStringAsync();
 
-                    // Ensure the response is successful
-                    response.EnsureSuccessStatusCode();
+                // Parse the response as a JObject
+                var jsonResponse = JObject.Parse(responseContent);
 
-                    // Read the response as a string
-                    string responseString = await response.Content.ReadAsStringAsync();
-
-                    // Return the response string
-                    return responseString;
-                }
-                catch (Exception ex)
-                {
-                    // Handle any errors that occur during the request
-                    return $"Error: {ex.Message}";
-                }
+                // Return the extracted value (it could be any type based on the API response)
+                return jsonResponse;
             }
         }
 

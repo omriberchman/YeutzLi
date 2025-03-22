@@ -1,17 +1,7 @@
-﻿using Android.App;
-using Android.Content;
-using Android.Gms.Extensions;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+﻿using Android.Gms.Extensions;
 using Firebase.Auth;
 using Firebase.Firestore;
 using Java.Util;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace YeutzLi
@@ -20,9 +10,9 @@ namespace YeutzLi
     {
         string Email{ set; get; }
         string Password { set; get; }
-        string Age { set; get; }
+        int Age { set; get; }
 
-        public User(string email, string password, string age)
+        public User(string email, string password, int age)
         {
             Email = email;
             Password = password;

@@ -53,13 +53,13 @@ namespace YeutzLi
 
             if (await user.Login())
             {
-                Toast.MakeText(this, "Successfully registered", ToastLength.Short).Show();
+                Toast.MakeText(this, "Successfully logged in", ToastLength.Short).Show();
                 Intent intent = new Intent(this, typeof(HomeActivity));
                 StartActivity(intent);
             }
             else
             {
-                Toast.MakeText(this, "Error accrued while registering. Try again..", ToastLength.Short).Show();
+                Toast.MakeText(this, "Error accrued while logging in. Try again..", ToastLength.Short).Show();
             }
         }
 

@@ -37,15 +37,20 @@ namespace YeutzLi
         {
             string email = reg_email.Text;
             string password = reg_password.Text;
-            string ageString = reg_age.Text;
+            int ageInt = Int32.Parse(reg_age.Text);
 
             // בדיקת אם כל השדות הוזנו
-            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(ageString))
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) || ageInt == null)
             {
                 Toast.MakeText(this, "Please fill all fields", ToastLength.Short).Show();
                 return;
             }
-            User user=new User(email,password,ageString);  
+            if (ageInt < 18)
+            {
+                Toast.MakeText(this, "Must be 18 years old or older.", ToastLength.Short).Show();
+                return;
+            }
+            User user=new User(email,password,ageInt);  
             if(await user.Register())
             {
                 Toast.MakeText(this, "Successfully registered", ToastLength.Short).Show();
