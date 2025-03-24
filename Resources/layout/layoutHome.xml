@@ -12,6 +12,7 @@
 
     <!-- Greeting message -->
     <TextView
+        android:id="@+id/HomeText"
         android:text="Welcome to YeutzLi!"
         android:gravity="center"
         android:textStyle="bold"
@@ -30,7 +31,8 @@
         android:textSize="18sp"
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp"
+        android:background="@color/colorAccent"/>
 
     <!-- Logout Button -->
     <Button
@@ -40,6 +42,7 @@
         android:textSize="16sp"
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:background="@color/colorAccent"/>
 
 </LinearLayout>

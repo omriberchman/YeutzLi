@@ -5,6 +5,7 @@ using Android.Widget;
 using AndroidX.AppCompat.App;
 using Android.Content;
 using System;
+using System.IO;
 
 namespace YeutzLi
 {
@@ -19,6 +20,13 @@ namespace YeutzLi
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
+
+            //Init the history.txt file
+            // Get the file path
+            string path = Path.Combine(Application.Context.FilesDir.AbsolutePath, "history.txt");
+
+            // Create or reset the file by writing an empty string
+            File.WriteAllText(path, "");
 
             // Find the button by ID
             Button loginButton = FindViewById<Button>(Resource.Id.loginButton);

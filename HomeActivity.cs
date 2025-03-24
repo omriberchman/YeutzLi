@@ -23,6 +23,8 @@ namespace YeutzLi
             btHomeLogout = FindViewById<Button>(Resource.Id.btHomeLogout);
             btHomeCounselor = FindViewById<Button>(Resource.Id.btHomeCounselor);
 
+
+
             // Set the click event
             btHomeLogout.Click += BtHomeLogout_Click;
             btHomeCounselor.Click += btHomeCounselor_click;

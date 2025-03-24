@@ -10,7 +10,7 @@
         android:id="@+id/chatResponse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your Overlay Text"
+        android:text="\n\n\nFeel free to ask me any question!"
         android:textSize="20dp"
         android:textColor="@android:color/white"
         android:layout_gravity="center"
