@@ -7,11 +7,8 @@ using System;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Android.Gms.Common.Apis;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Android.Graphics.Drawables;
-using static Android.Graphics.ColorSpace;
 using System.IO;
 
 namespace YeutzLi
@@ -29,7 +26,6 @@ namespace YeutzLi
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.layoutCounselor);
             // Create your application here
-
             userInput = FindViewById<EditText>(Resource.Id.userInput);
             sendButton = FindViewById<Button>(Resource.Id.sendButton);
             chatResponse = FindViewById<TextView>(Resource.Id.chatResponse);
@@ -47,13 +43,6 @@ namespace YeutzLi
                     string response = JsonConvert.SerializeObject(result, Formatting.Indented);
                     docImage.SetImageResource(Resource.Drawable.found);
                     chatResponse.Text = response;
-
-                    // Append to history.txt
-                    string path = Path.Combine(Application.Context.FilesDir.AbsolutePath, "history.txt");
-                    string logEntry = $"user : {message}\n" +
-                                      $"doc : {response}\n\n";
-
-                    File.AppendAllText(path, logEntry);
                 }
             };
         }
@@ -61,8 +50,6 @@ namespace YeutzLi
         public static async Task<object> GetAIResponse(string prompt)
         {
             string url = "http://100.76.226.62:11434/api/generate";
-            string path = Path.Combine(Application.Context.FilesDir.AbsolutePath, "history.txt");
-            string chatHistory = File.Exists(path) ? File.ReadAllText(path) : "";
 
             var data = new
             {
@@ -70,7 +57,7 @@ namespace YeutzLi
                 prompt = prompt,
                 system = "You are Dr. Love, a dedicated relatioship counselor eager to help people navigate their love lives. You provide thoughtful, professional advice on dating, marriage, breakups, communication, trust, and all relationship-related matters. However, you strictly stick to your expertise. If asked about anything unrelated to relationships, you politely respond:\r\n\r\n\"I'm afraid I can't help you with that. My focus is on relationships.\"\r\n\r\nKeep your responses concise, supportive, and insightful, ensuring users feel heard and guided without lengthy explanations. Also, your answers are displayed in plain text not in markdown so no speical characters and such. Do answer to questions to how are you and such.",
                 stream = false,
-            
+
             };
 
             using (var client = new HttpClient())

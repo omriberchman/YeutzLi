@@ -4256,14 +4256,14 @@ namespace YeutzLi
 			// aapt resource value: 0x7F0800EC
 			public const int text2 = 2131230956;
 			
+			// aapt resource value: 0x7F0800F1
+			public const int textinput_counter = 2131230961;
+			
 			// aapt resource value: 0x7F0800F2
-			public const int textinput_counter = 2131230962;
+			public const int textinput_error = 2131230962;
 			
 			// aapt resource value: 0x7F0800F3
-			public const int textinput_error = 2131230963;
-			
-			// aapt resource value: 0x7F0800F4
-			public const int textinput_helper_text = 2131230964;
+			public const int textinput_helper_text = 2131230963;
 			
 			// aapt resource value: 0x7F0800ED
 			public const int textSpacerNoButtons = 2131230957;
@@ -4275,19 +4275,19 @@ namespace YeutzLi
 			public const int textStart = 2131230959;
 			
 			// aapt resource value: 0x7F0800F0
-			public const int textView1 = 2131230960;
+			public const int text_input_password_toggle = 2131230960;
 			
-			// aapt resource value: 0x7F0800F1
-			public const int text_input_password_toggle = 2131230961;
+			// aapt resource value: 0x7F0800F4
+			public const int time = 2131230964;
 			
 			// aapt resource value: 0x7F0800F5
-			public const int time = 2131230965;
+			public const int title = 2131230965;
 			
 			// aapt resource value: 0x7F0800F6
-			public const int title = 2131230966;
+			public const int titleDividerNoCustom = 2131230966;
 			
 			// aapt resource value: 0x7F0800F7
-			public const int titleDividerNoCustom = 2131230967;
+			public const int titleText = 2131230967;
 			
 			// aapt resource value: 0x7F0800F8
 			public const int title_template = 2131230968;

@@ -6,6 +6,8 @@ using AndroidX.AppCompat.App;
 using Android.Content;
 using System;
 using System.IO;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace YeutzLi
 {
@@ -18,15 +20,19 @@ namespace YeutzLi
         {
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
 
-            //Init the history.txt file
-            // Get the file path
-            string path = Path.Combine(Application.Context.FilesDir.AbsolutePath, "history.txt");
+            // Initialize the chatHistory.json file
+            // Get the file path for chatHistory.json in the app's private storage directory
+            string path = Path.Combine(Application.Context.FilesDir.AbsolutePath, "chatHistory.json");
 
-            // Create or reset the file by writing an empty string
-            File.WriteAllText(path, "");
+            // Initialize an empty chat history list
+            var initialHistory = new List<Dictionary<string, string>>();
+
+            // Write the empty history list as JSON to the file
+            File.WriteAllText(path, JsonConvert.SerializeObject(initialHistory, Formatting.Indented));
 
             // Find the button by ID
             Button loginButton = FindViewById<Button>(Resource.Id.loginButton);
@@ -38,8 +44,8 @@ namespace YeutzLi
 
             btMainReg = FindViewById<Button>(Resource.Id.btMainReg);
             btMainReg.Click += BtMainReg_Click;
-
         }
+
 
         private void BtMainReg_Click(object sender, System.EventArgs e)
         {
