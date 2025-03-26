@@ -10,12 +10,11 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.IO;
-using System.Collections.Generic;
 
 namespace YeutzLi
 {
-    [Activity(Label = "CounselorActivity")]
-    public class CounselorActivity : Activity
+    [Activity(Label = "CommongroundActivity")]
+    public class CommongroundActivity : Activity
     {
         EditText userInput;
         Button sendButton;
@@ -50,34 +49,16 @@ namespace YeutzLi
 
         public static async Task<object> GetAIResponse(string prompt)
         {
-            string chatHistoryFilePath = Path.Combine(Application.Context.FilesDir.AbsolutePath, "chatHistory.json");
+            string url = "http://100.76.226.62:11434/api/generate";
 
-            // Read existing chat history or create an empty list if the file doesn't exist
-            List<Dictionary<string, string>> chatHistory = new List<Dictionary<string, string>>();
-
-            if (File.Exists(chatHistoryFilePath))
-            {
-                var existingHistory = File.ReadAllText(chatHistoryFilePath);
-                chatHistory = JsonConvert.DeserializeObject<List<Dictionary<string, string>>>(existingHistory);
-            }
-
-            
-            // Prepare data to send to the API
-            string url = "http://100.76.226.62:11434/api/chat";
             var data = new
             {
                 model = "gemma3",
-                prompt,
-                messages = chatHistory,
-                stream = false
-            };
+                prompt = prompt,
+                system = "You are Dr. Love, a dedicated relatioship counselor eager to help people navigate their love lives. You provide thoughtful, professional advice on dating, marriage, breakups, communication, trust, and all relationship-related matters. However, you strictly stick to your expertise. If asked about anything unrelated to relationships, you politely respond:\r\n\r\n\"I'm afraid I can't help you with that. My focus is on relationships.\"\r\n\r\nKeep your responses concise, supportive, and insightful, ensuring users feel heard and guided without lengthy explanations. Also, your answers are displayed in plain text not in markdown so no speical characters and such. Do answer to questions to how are you and such.",
+                stream = false,
 
-            // Add the user's prompt to chat history
-            chatHistory.Add(new Dictionary<string, string>
-            {
-                { "role", "user" },
-                { "content",  prompt}
-            });
+            };
 
             using (var client = new HttpClient())
             {
@@ -91,22 +72,13 @@ namespace YeutzLi
                 var jsonResponse = JObject.Parse(responseContent);
 
                 // Extract the "response" key from the JSON object
-                var responseData = jsonResponse["message"]["content"].ToString();
+                var responseData = jsonResponse["response"];
 
-                // Add the AI's response to chat history
-                chatHistory.Add(new Dictionary<string, string>
-                {
-                    { "role", "assistant" },
-                    { "content", responseData }
-                });
-
-                // Save the updated chat history back to the file
-                File.WriteAllText(chatHistoryFilePath, JsonConvert.SerializeObject(chatHistory, Formatting.Indented));
-
-                // Return the AI's response
+                // Return the extracted value (it could be any type based on the API response)
                 return responseData;
             }
         }
+
 
     }
 }

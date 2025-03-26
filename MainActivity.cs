@@ -69,6 +69,8 @@ namespace YeutzLi
             {
                 Toast.MakeText(this, "Successfully logged in", ToastLength.Short).Show();
                 Intent intent = new Intent(this, typeof(HomeActivity));
+                emailField.Text = "";
+                passwordField.Text = "";
                 StartActivity(intent);
             }
             else
