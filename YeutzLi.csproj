@@ -63,6 +63,7 @@
     <Compile Include="ActivityRegister.cs" />
     <Compile Include="CommondgroundActivity.cs" />
     <Compile Include="FireBaseHelper.cs" />
+    <Compile Include="RoomMenuActivity.cs" />
     <Compile Include="HomeActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="CounselorActivity.cs" />
@@ -148,6 +149,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\layoutCommonground.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\layoutRoomMenu.xml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>

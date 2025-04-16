@@ -26,7 +26,6 @@ namespace YeutzLi
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.layoutCounselor);
-            // Create your application here
             userInput = FindViewById<EditText>(Resource.Id.userInput);
             sendButton = FindViewById<Button>(Resource.Id.sendButton);
             chatResponse = FindViewById<TextView>(Resource.Id.chatResponse);
@@ -38,8 +37,8 @@ namespace YeutzLi
                 if (!string.IsNullOrEmpty(message))
                 {
                     docImage.SetImageResource(Resource.Drawable.thinking);
-                    userInput.Text = "";  // Clear input
-                    chatResponse.Text = "Thinking...";  // Show loading text
+                    userInput.Text = "";  
+                    chatResponse.Text = "Thinking...";  
                     var result = await GetAIResponse(message);
                     string response = JsonConvert.SerializeObject(result, Formatting.Indented);
                     docImage.SetImageResource(Resource.Drawable.found);

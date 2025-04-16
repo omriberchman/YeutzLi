@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:gravity="center_horizontal"
+    android:background="@drawable/background">
+
+    <TextView
+        android:text="Choose a room"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="#212121"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="45sp"
+        android:layout_marginTop="30dp"/>
+    <TextView
+        android:id="@+id/titleText"
+        android:text=""
+        android:gravity="center"
+        android:textStyle="italic"
+        android:textColor="#008000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:layout_marginTop="-5dp"/>
+    <EditText
+        android:id="@+id/roomCodeEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Room Code"
+        android:layout_marginTop="30dp"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/joinButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Join"
+        android:layout_marginTop="16dp" />
+    <TextView
+        android:text="------------------------ Or ------------------------"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="#212121"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"/>
+    <Button
+        android:id="@+id/newRoomButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="New Room"
+        android:layout_marginTop="8dp" />
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:layout_marginTop="170dp" />
+
+</LinearLayout>

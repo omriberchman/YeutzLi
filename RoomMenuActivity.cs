@@ -1,0 +1,69 @@
+﻿using Android.App;
+using Android.Content;
+using Android.OS;
+using Android.Runtime;
+using Android.Views;
+using Android.Widget;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace YeutzLi
+{
+    [Activity(Label = "RoomMenuActivity")]
+    public class RoomMenuActivity : Activity
+    {
+        TextView titleText;
+        EditText roomCodeEditText;
+        Button joinButton, newRoomButton, backButton;
+        HttpClient client = new HttpClient();
+
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+            SetContentView(Resource.Layout.layoutRoomMenu);
+            
+
+            titleText = FindViewById<TextView>(Resource.Id.titleText);
+            roomCodeEditText = FindViewById<EditText>(Resource.Id.roomCodeEditText);
+            joinButton = FindViewById<Button>(Resource.Id.joinButton);
+            newRoomButton = FindViewById<Button>(Resource.Id.newRoomButton);
+            backButton = FindViewById<Button>(Resource.Id.backButton);
+
+            joinButton.Click += (sender, e) =>
+            {
+                string roomCode = roomCodeEditText.Text;
+                Toast.MakeText(this, $"Joining room: {roomCode}", ToastLength.Short).Show();
+
+                Intent intent = new Intent(this, typeof(CommongroundActivity));
+                intent.PutExtra("Roomcode", roomCodeEditText.Text);
+                StartActivity(intent);
+            };
+
+            newRoomButton.Click += async (sender, e) =>
+            {
+
+                Toast.MakeText(this, "Creating new room...", ToastLength.Short).Show();
+                var result = await CreateNewRoom();
+                titleText.Text = "New room code: " + result.ToString();
+            };
+
+            backButton.Click += (sender, e) =>
+            {
+                Finish();
+            };
+        }
+        public static async Task<string> CreateNewRoom()
+        {
+            string url = "https://yeautzlicommonground-default-rtdb.firebaseio.com/rooms.json";
+            Random random = new Random();
+            int randomNumber = random.Next(0, 1001); // upper bound is exclusive
+
+            return randomNumber.ToString();
+        }
+    }
+}
