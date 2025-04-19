@@ -36,12 +36,15 @@ namespace YeutzLi
 
             joinButton.Click += (sender, e) =>
             {
-                string roomCode = roomCodeEditText.Text;
-                Toast.MakeText(this, $"Joining room: {roomCode}", ToastLength.Short).Show();
+                if (roomCodeEditText.Text != null)
+                {
+                    string roomCode = roomCodeEditText.Text;
+                    Toast.MakeText(this, $"Joining room: {roomCode}", ToastLength.Short).Show();
 
-                Intent intent = new Intent(this, typeof(CommongroundActivity));
-                intent.PutExtra("Roomcode", roomCodeEditText.Text);
-                StartActivity(intent);
+                    Intent intent = new Intent(this, typeof(CommongroundActivity));
+                    intent.PutExtra("Roomcode", roomCodeEditText.Text);
+                    StartActivity(intent);
+                }
             };
 
             newRoomButton.Click += async (sender, e) =>
