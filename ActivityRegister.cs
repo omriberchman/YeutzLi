@@ -50,7 +50,7 @@ namespace YeutzLi
                 Toast.MakeText(this, "Must be 18 years old or older.", ToastLength.Short).Show();
                 return;
             }
-            User user=new User(email,password,ageInt);  
+            User user=new User(email,password);  
             if(await user.Register())
             {
                 Toast.MakeText(this, "Successfully registered", ToastLength.Short).Show();

@@ -66,6 +66,7 @@ namespace YeutzLi
                 JObject data = (jsonData == "null") ? new JObject() : JObject.Parse(jsonData);
                 if (data["response"] != null)
                 {
+                    docImage.SetImageResource(Resource.Drawable.found);
                     chatResponse.Text = data["response"].ToString();
                 }
                 else
@@ -108,7 +109,7 @@ namespace YeutzLi
 
                     if (updated.ContainsKey("part1") && updated.ContainsKey("part2"))
                     {
-                        AIupdate(updated["part1"].ToString(), updated["part2"].ToString(), Intent.GetStringExtra("Roomcode")); //NOT UPLOADING TO FIREBASE!
+                        AIupdate(updated["part1"].ToString(), updated["part2"].ToString(), Intent.GetStringExtra("Roomcode")); 
                         return 2;
                     }
                     else

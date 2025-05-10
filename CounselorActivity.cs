@@ -60,7 +60,12 @@ namespace YeutzLi
                 chatHistory = JsonConvert.DeserializeObject<List<Dictionary<string, string>>>(existingHistory);
             }
 
-            
+            chatHistory.Add(new Dictionary<string, string>
+            {
+                { "role", "System" },
+                { "content",  "You are a relationship counselor. You only respond to questions about romantic relationships, dating, breakups, communication, and emotional support. Keep your answers short, direct, and under 200 characters. If asked unrelated questions, politely redirect to relationship topics. You may respond kindly to greetings like \"how are you\" but avoid discussing other subjects."}
+            });
+
             // Prepare data to send to the API
             string url = "http://100.76.226.62:11434/api/chat";
             var data = new

@@ -60,13 +60,20 @@ namespace YeutzLi
                 Finish();
             };
         }
-        public static async Task<string> CreateNewRoom()
+        public async Task<string> CreateNewRoom()
         {
-            string url = "https://yeautzlicommonground-default-rtdb.firebaseio.com/rooms.json";
-            Random random = new Random();
-            int randomNumber = random.Next(0, 1001); // upper bound is exclusive
+            string url = "https://yeautzlicommonground-default-rtdb.firebaseio.com/rooms/";
+            var random = new Random();
+            string roomNumber = random.Next(0, 1001).ToString();
+            string result = await client.GetStringAsync($"{url}{roomNumber}.json");
 
-            return randomNumber.ToString();
+            while (result != "null")
+            {
+                roomNumber = random.Next(0, 1001).ToString();
+                result = await client.GetStringAsync($"{url}{roomNumber}.json");
+            }
+
+            return roomNumber;
         }
     }
 }

@@ -10,14 +10,7 @@ namespace YeutzLi
     {
         string Email{ set; get; }
         string Password { set; get; }
-        int Age { set; get; }
-
-        public User(string email, string password, int age)
-        {
-            Email = email;
-            Password = password;
-            Age = age;
-        }
+        
         public User(string email, string password)
         {
             Email = email;
