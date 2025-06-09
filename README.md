@@ -38,9 +38,9 @@
 
 *(Add screenshots here to showcase the Counseling and Commonground modes, authentication flow, and UI design)*
 <div style="display: flex; gap: 10px;">
-  <img src="https://github.com/user-attachments/assets/3ca6edd8-1801-4adc-b786-2c045b119ebf" alt="YeutzLi Screenshot 3" width="300"/>
-  <img src="https://github.com/user-attachments/assets/ea1111f9-e6d1-4b3e-a672-e404f1db5986" alt="YeutzLi Screenshot 2" width="300"/>
-  <img src="https://github.com/user-attachments/assets/1ea1563f-e1c4-439b-893f-9084b9782d9a" alt="YeutzLi Screenshot 1" width="300"/>
+  <img src="https://github.com/user-attachments/assets/3ca6edd8-1801-4adc-b786-2c045b119ebf" alt="YeutzLi Screenshot 3" width="200"/>
+  <img src="https://github.com/user-attachments/assets/ea1111f9-e6d1-4b3e-a672-e404f1db5986" alt="YeutzLi Screenshot 2" width="200"/>
+  <img src="https://github.com/user-attachments/assets/1ea1563f-e1c4-439b-893f-9084b9782d9a" alt="YeutzLi Screenshot 1" width="200"/>
 
 </div>
 
